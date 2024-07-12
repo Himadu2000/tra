@@ -5,6 +5,6 @@ WORKDIR /app
 ## copy the main binary
 COPY ./main ./main
 
-RUN apk update && apk add curl
+RUN apt update && apt add curl
 RUN "curl -f https://google.com || exit 1"
 RUN ./main

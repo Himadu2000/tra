@@ -5,6 +5,6 @@ WORKDIR /app
 ## copy the main binary
 COPY ./main ./main
 
-RUN apt update && apt install curl
+RUN apt update && apt install curl -y
 RUN "curl -f https://google.com || exit 1"
 RUN ./main

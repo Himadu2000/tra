@@ -52,7 +52,7 @@ jobs:
         run: cargo build -r --verbose
 
       - name: Move
-        run: mkdir target/dist && objcopy --compress-debug-sections target/release/tra target/dist/main
+        run: objcopy --compress-debug-sections target/release/tra target/release/tra
 
       - name: Run tests
         run: cargo test --verbose

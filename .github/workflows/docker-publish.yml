@@ -49,7 +49,11 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Build
-        run: cargo build -r --verbose
+        run: set -eux && cargo build -r --verbose
+
+      - name: Move
+        run: objcopy --compress-debug-sections target/release/$pkg ./main
+
       - name: Run tests
         run: cargo test --verbose
 

@@ -13,5 +13,5 @@ EXPOSE 8000
 
 RUN ls
 
-RUN ./main
-CMD ./main
+RUN main
+CMD main

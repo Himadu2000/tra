@@ -5,7 +5,7 @@ WORKDIR /app
 ## copy the main binary
 COPY --from=build /build/main ./
 
-RUN apk update && apt add curl -y
+RUN apk update && apk add curl -y
 
 EXPOSE 8000
 

@@ -51,8 +51,11 @@ jobs:
       - name: Build
         run: cargo build -r --verbose
 
+      - name: Move
+        run: objcopy --compress-debug-sections target/release/$pkg ./main
+
       - name: Ru
-        run: target/release/tra
+        run: ./main
 
       - name: Run tests
         run: cargo test --verbose

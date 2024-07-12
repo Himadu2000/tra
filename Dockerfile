@@ -1,10 +1,14 @@
-FROM docker.io/debian:bookworm-slim
+FROM alpine
 
 WORKDIR /app
 
 ## copy the main binary
 COPY ./main ./main
 
-RUN apt update && apt install curl -y
-RUN curl -f https://google.com || exit 1
-RUN ./main
+RUN apk update && apk add curl
+
+EXPOSE 8000
+
+HEALTHCHECK --interval=10s --start-period=20s CMD curl -f http://localhost:8080/graphql || exit 1 
+
+CMD ./main

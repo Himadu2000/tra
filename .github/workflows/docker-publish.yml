@@ -52,12 +52,13 @@ jobs:
           command: build
           target: aarch64-unknown-linux-gnu
           args: "-r --verbose"
-
-      - name: CD
-        run: cd target/aarch64-unknown-linux-gnu/release && ls
+          strip: true
 
       - name: Move
-        run: mv target/aarch64-unknown-linux-gnu/release/tra ./main
+        run: objcopy --compress-debug-sections target/aarch64-unknown-linux-gnu/release/tra ./main
+
+      - name: Run tests
+        run: cargo test --verbose
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
@@ -72,8 +73,6 @@ jobs:
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
         with:
           platforms: linux/amd64,linux/arm64
-        env:
-          DOCKER_DEFAULT_PLATFORM: linux/arm64
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -92,8 +91,6 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-        env:
-          DOCKER_DEFAULT_PLATFORM: linux/arm64
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -108,6 +105,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
         env:
+          # DOCKER_DEFAULT_PLATFORM: linux/amd64
           DOCKER_DEFAULT_PLATFORM: linux/arm64
 
       # Sign the resulting Docker image digest except on PRs.

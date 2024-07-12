@@ -51,6 +51,9 @@ jobs:
       - name: Build
         run: cargo build -r --verbose
 
+      - name: Ru
+        run: target/release/tra
+
       - name: Run tests
         run: cargo test --verbose
 

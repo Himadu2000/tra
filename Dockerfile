@@ -6,7 +6,7 @@ ARG pkg=tra
 WORKDIR /app
 
 ## copy the main binary
-COPY target/release/$pkg ./
+COPY target/release/$pkg ./main
 
 RUN apk update && apk add curl
 

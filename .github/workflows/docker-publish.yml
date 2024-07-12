@@ -54,7 +54,7 @@ jobs:
           args: "-r --verbose"
 
       - name: Move
-        run: mv target/release/server ./main
+        run: mv target/release/tra ./main
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer

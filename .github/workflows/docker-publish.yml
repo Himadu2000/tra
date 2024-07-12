@@ -56,6 +56,12 @@ jobs:
       - name: CD
         run: cd target/release && ls
 
+      - name: CD2
+        run: cd target/release/examples && ls
+
+      - name: CD3
+        run: cd target/release/build && ls
+
       - name: Move
         run: mv target/release/tra ./main
 

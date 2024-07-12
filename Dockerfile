@@ -3,8 +3,9 @@ FROM alpine
 WORKDIR /app
 
 ## copy the main binary
-COPY ./main ./
+COPY ./main ./main
 
+RUN ls
 RUN apk update && apk add curl
 
 EXPOSE 8000

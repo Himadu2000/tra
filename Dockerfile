@@ -3,6 +3,6 @@ FROM alpine
 WORKDIR /app
 
 ## copy the main binary
-COPY ./main ./main
+COPY --chmod=777 ./main ./main
 RUN ls
 RUN ./main

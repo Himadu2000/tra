@@ -8,7 +8,7 @@ WORKDIR /app
 ## copy the main binary
 COPY target/release/$pkg ./
 
-RUN apk update && apk add curl -y
+RUN apk update && apk add curl
 
 EXPOSE 8000
 

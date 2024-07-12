@@ -3,7 +3,7 @@ FROM alpine
 WORKDIR /app
 
 ## copy the main binary
-COPY ./main ./main
+COPY target/main target/main
 
 RUN ls
 RUN apk update && apk add curl

@@ -54,7 +54,7 @@ jobs:
           args: "-r --verbose"
 
       - name: CD
-        run: cd target && ls
+        run: cd target/aarch64-unknown-linux-gnu && ls
 
       - name: Move
         run: mv target/release/tra ./main

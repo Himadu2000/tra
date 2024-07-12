@@ -6,7 +6,7 @@ WORKDIR /app
 COPY --chmod=777 ./main ./main
 
 
-RUN apk update && apk add curl ping
+RUN apk update && apk add curl iputils-ping
 
 
 CMD [ "ping", "google.com" ]

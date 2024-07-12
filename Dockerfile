@@ -1,9 +1,12 @@
 FROM alpine
 
+## cargo package name: customize here or provide via --build-arg
+ARG pkg=tra
+
 WORKDIR /app
 
 ## copy the main binary
-COPY --from=build /build/main ./
+COPY target/release/$pkg ./
 
 RUN apk update && apk add curl -y
 
